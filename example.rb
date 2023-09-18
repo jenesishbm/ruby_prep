@@ -16,3 +16,18 @@ puts "thousands: #{thousands}"
 puts "hundreds: #{hundreds}"
 puts "tens: #{tens}"
 puts "ones: #{ones}"
+
+# 3. Write a program that uses a hash to store a list of movie titles with the year they came out. Then use the puts command to make your program print out the year of each movie
+movies = {
+  hulk: 2001,
+  hereditary: 2019,
+  conjuring: 2018,
+  feed: 2005,
+  frozen: 2016
+}
+
+puts movies[:hulk]
+puts movies[:hereditary]
+puts movies[:conjuring]
+puts movies[:feed]
+puts movies[:frozen]
