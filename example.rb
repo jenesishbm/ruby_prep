@@ -62,3 +62,6 @@ puts fac_8
 puts 4.32**2
 puts 5.28**2
 puts 2.91**2
+
+# 7. What does the following error message tell you?
+# There is a closing ) somewhere in the program without a corresponding opening (, and an opening { without a corresponding closing }. It may have happened when creating a hash.
