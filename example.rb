@@ -56,3 +56,9 @@ puts fac_5
 puts fac_6
 puts fac_7
 puts fac_8 
+
+# 6. Write a program that calculates the squares of 3 float numbers of your choosing and outputs the result to the screen.
+
+puts 4.32**2
+puts 5.28**2
+puts 2.91**2
