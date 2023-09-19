@@ -45,3 +45,14 @@ puts years[1]
 puts years[2]
 puts years[3]
 puts years[4]
+
+# 5. Write a program that outputs the factorial of the numbers 5, 6, 7, and 8.
+fac_5 = 1*2*3*4*5
+fac_6 = 1*2*3*4*5*6
+fac_7 = 1*2*3*4*5*6*7
+fac_8 = 1*2*3*4*5*6*7*8
+
+puts fac_5
+puts fac_6
+puts fac_7
+puts fac_8 
