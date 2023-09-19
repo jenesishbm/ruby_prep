@@ -4,3 +4,6 @@
 puts "What is your name?"
 name = gets.chomp
 puts "Hello " + name
+
+puts "Here is your name 10 times:"
+10.times { puts name }
