@@ -65,3 +65,9 @@ puts 2.91**2
 
 # 7. What does the following error message tell you?
 # There is a closing ) somewhere in the program without a corresponding opening (, and an opening { without a corresponding closing }. It may have happened when creating a hash.
+
+# VARIABLES
+
+# 1. Write a program called name.rb that asks the user to type in their name and then prints out a greeting message with their name included.
+name = gets.chomp
+puts "Hello " + name
