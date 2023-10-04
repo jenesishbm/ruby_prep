@@ -511,3 +511,80 @@ loop do
   end
 end
 
+# 8. Write a program that asks the user to enter two integers, then prints the results of dividing the first by the second. The second number must not be 0. Since this is user input, there's a good chance that the user won't enter a valid integer. Therefore, you must validate the input to be sure it is an integer. You can use the following code to determine whether the input is an integer:
+def valid_number?(number_string)
+  number_string.to_i.to_s == number_string
+end
+
+num = nil #must define variables outside each loop so they can be used in other loops
+den = nil #i.e. so that the denominator loop can call the num variable
+result = nil
+
+loop do
+  puts ">> Please enter the numerator"
+  num = gets.chomp
+  break if valid_number?(num)
+  puts "Invalid input. Only integers are allowed."
+end
+
+loop do
+  puts ">> Please enter the denominator"
+  den = gets.chomp
+  if den != "0" && valid_number?(den)
+    result = num.to_i.div(den.to_i)
+    puts "#{num} / #{den} is #{result}"
+  break
+  else puts "Invalid input. Only non-zero integers are allowed."
+  end
+end
+
+# 9. Modify the program from #5. so it repeats itself after each input/print iteration, asking for a new number each time through. The program should keep running until the user enters q or Q.
+
+loop do
+  puts ">> How many output lines do you want? Please enter a number >= 3 (Q to quit)."
+  lines = gets.chomp
+  if lines.to_i >= 3
+    lines.to_i.times { puts "Launch School is the best!" }
+  elsif lines.downcase == "q"
+    break
+  else puts "That's not enough lines! Please try again with a number >= 3."
+  end
+end
+
+# 10. Write a program that requests two integers from the user, adds them together, and then displays the result. Furthermore, insist that one of the integers be positive, and one negative; however, the order in which the two integers are entered does not matter.
+
+def valid_number?(number_string)
+  number_string.to_i.to_s == number_string && number_string.to_i != 0
+end
+
+first = nil
+second = nil
+sum = nil
+
+loop do
+  puts ">> Please enter a positive or negative integer."
+  first = gets.chomp
+
+  if valid_number?(first)
+    puts ">> Please enter another positive or negative integer."
+    second = gets.chomp
+  else puts ">> Invalid input. Only non-zero integers are allowed."
+  end
+
+  if valid_number?(second) && (first.to_i > 0 && second.to_i < 0 || first.to_i < 0 && second.to_i > 0)
+    break
+  elsif valid_number?(second) == false
+    puts ">> Invalid input. Only non-zero integers are allowed."
+    puts ">> Please enter another positive or negative integer."
+    second = gets.chomp
+    break if valid_number?(second)
+  else
+    puts ">> Sorry. One integer must be positive, one must be negative."
+    puts ">> Please start over."
+  end
+end
+
+sum = first.to_i + second.to_i
+puts "#{first} + #{second} = #{sum}"
+
+
