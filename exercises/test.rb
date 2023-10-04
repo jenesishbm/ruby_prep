@@ -7,6 +7,7 @@ first = nil
 second = nil
 sum = nil
 
+# without starting over
 =begin
 loop do
   puts ">> Please enter a positive or negative integer."
@@ -36,8 +37,8 @@ else
   puts "Please start over."
 end
 =end
-  
-###
+
+# Complete solution
 loop do
   puts ">> Please enter a positive or negative integer."
   first = gets.chomp
@@ -48,7 +49,7 @@ loop do
   else puts ">> Invalid input. Only non-zero integers are allowed."
   end
 
-  if valid_number?(second) && (first.to_i > 0 && second.to_i < 0 || first.to_i < 0 && second.to_i > 0)
+  if valid_number?(second) && (first.to_i * second.to_i < 0)
     break
   elsif valid_number?(second) == false
     puts ">> Invalid input. Only non-zero integers are allowed."

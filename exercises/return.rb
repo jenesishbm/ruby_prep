@@ -571,7 +571,7 @@ loop do
   else puts ">> Invalid input. Only non-zero integers are allowed."
   end
 
-  if valid_number?(second) && (first.to_i > 0 && second.to_i < 0 || first.to_i < 0 && second.to_i > 0)
+  if valid_number?(second) && (first.to_i * second.to_i < 0)
     break
   elsif valid_number?(second) == false
     puts ">> Invalid input. Only non-zero integers are allowed."
@@ -588,3 +588,258 @@ sum = first.to_i + second.to_i
 puts "#{first} + #{second} = #{sum}"
 
 
+# LS solution using a METHOD:
+
+def valid_number?(number_string)
+  number_string.to_i.to_s == number_string && number_string.to_i != 0
+end
+
+def read_number # method to collect input and make sure it's a valid integer
+  loop do
+    puts '>> Please enter a positive or negative integer:'
+    number = gets.chomp
+    return number.to_i if valid_number?(number) # breaks the loop
+    puts '>> Invalid input. Only non-zero integers are allowed.'
+  end
+end
+
+first_number = nil
+second_number = nil
+
+loop do
+  first_number = read_number # collect integer one
+  second_number = read_number # collect integer two
+  break if first_number * second_number < 0 # break loop if one is negative
+  puts '>> Sorry. One integer must be positive, one must be negative.'
+  puts '>> Please start over.' # if not, starts over
+end
+
+sum = first_number + second_number
+puts "#{first_number} + #{second_number} = #{sum}"
+
+## METHODS
+
+# 1. Write a method named print_me that prints I'm printing within the method! when invoked as follows:
+def print_me
+  puts "I'm printing within the method!" #prints string but returns nil
+end
+
+print_me
+
+# 2. Write a method named print_me so that I'm printing the return value! is printed when running the following code:
+def print_me
+  "I'm printing the return value"
+end
+
+puts print_me
+
+# 3. Write two methods, one that returns the string "Hello" and one that returns the string "World". Then print both strings using #puts, combining them into one sentence.
+ 
+def hello
+  "Hello"
+end
+
+def world
+  "World"
+end
+
+puts hello + " " + world
+puts "#{hello} #{world}"
+
+# 4. Write a method named greet that invokes the hello and world methods:
+
+def hello
+  "Hello"
+end
+
+def world
+  "World"
+end
+
+def greet
+  "#{hello} #{world}"
+  # or hello + " " + world
+end
+
+puts greet
+
+# 5. Using the following code, write a method called car that takes two arguments and prints a string containing the values of both arguments.
+def car(make, model)
+  puts make + " " + model
+end
+
+car('Toyota', 'Corolla')
+
+# 6. The variable below will be randomly assigned as true or false. Write a method named time_of_day that, given a boolean as an argument, prints "It's daytime!" if the boolean is true and "It's nighttime!" if it's false. Pass daylight into the method as the argument to determine whether it's day or night.
+
+daylight = [true, false].sample
+
+def time_of_day(boolean)
+  puts "It's daytime!" if true
+  puts "It's nighttime!" if false
+end
+
+time_of_day(daylight)
+
+# 7. Update the below method definitions and method invocations as necessary so that the names are printed as shown:
+def dog(name)
+  return name
+end
+
+def cat(name)
+  return name
+end
+
+puts "The dog's name is #{dog('Spot')}."
+puts "The cat's name is #{cat('Ginger')}."
+
+# 8. Write a method that accepts one argument, but doesn't require it. The parameter should default to the string "Bob" if no argument is given. The method's return value should be the value of the argument.
+def assign_name(name = "Bob")
+  return name
+end
+
+puts assign_name('Kevin') == 'Kevin' # true
+puts assign_name == 'Bob' # true
+
+# 9. Write the following methods so that each output is true.
+def add(one, two)
+  one + two
+end
+
+def multiply(one, two)
+  one * two
+end
+
+puts add(2, 2) == 4 #true
+puts add(5, 4) == 9 #true
+puts multiply(add(2, 2), add(5, 4)) == 36 #true
+
+# 10. The variables below are both assigned to arrays. The first one, names, contains a list of names. The second one, activities, contains a list of activities. Write the methods name and activity so that they each take the appropriate array and return a random value from it. Then write the method sentence that combines both values into a sentence and returns it from the method.
+
+names = ['Dave', 'Sally', 'George', 'Jessica']
+activities = ['walking', 'running', 'cycling']
+
+def name(arr = names)
+  arr.sample # pick a random value from array
+end
+
+def activity(arr = activities)
+  arr.sample # pick a random value from array
+end
+
+def sentence(name, activity)
+  "#{name} was #{activity} today!"
+end
+
+puts name(names)
+puts activity(activities)
+puts sentence(name(names), activity(activities))
+
+## RETURN
+# 1. What will the following code print? Why? Don't run it until you've attempted to answer.
+
+def meal
+  return 'Breakfast'
+end
+
+puts meal # Breakfast
+
+# 2. What will the following code print? Why? Don't run it until you've attempted to answer.
+
+def meal
+  'Evening' # the return value of a method in ruby is the evaluated result of the last line in the method
+end
+
+puts meal # Evening
+
+# 3. What will the following code print? Why? Don't run it until you've attempted to answer.
+def meal
+  return 'Breakfast'
+  'Dinner'
+end
+
+puts meal # Breakfast - return causes a method to return specified value then exit method
+
+# 4. What will the following code print? Why? Don't run it until you've attempted to answer.
+def meal
+  puts 'Dinner'
+  return 'Breakfast'
+end
+
+puts meal #Dinner and Breakfast. Dinner from inside the method. Breakfast from outside.
+
+# 5. What will the following code print? Why? Don't run it until you've attempted to answer.
+#REVIEW: got this wrong
+def meal
+  'Dinner'
+  puts 'Dinner'
+end
+
+p meal # Dinner nil. The method prints dinner and p prints nil since puts is the last line evaluated in the method (returns nil). 
+
+# 6. What will the following code print? Why? Don't run it until you've attempted to answer.
+def meal
+  return 'Breakfast' # return immediately exits the method and returns the provided value
+  'Dinner'
+  puts 'Dinner'
+end
+
+puts meal # Breakfast
+
+# 7. What will the following code print? Why? Don't run it until you've attempted to answer.
+#REVIEW: got this wrong
+def count_sheep
+  5.times do |sheep|
+    puts sheep
+  end
+end
+
+puts count_sheep # WRONG: the method will print sheep 5 times and this line will print nothing because the method returns nil. WRONG because sheep is not in quotes, it's a placeholder and .times() is an integer method starting at 0. Read the ruby docs next time.
+ 
+# LS: the .times method iterated 5 times (prints 0 - 4) and returned the initial integer, 5, which puts printed.
+
+=begin
+Correct answer: We're using Integer#times within the count_sheep method to count from 0 to 4 (#times starts at 0). 
+Therefore, it's no surprise that the output includes 0 through 4. What may be surprising, however, is the fact that the output includes 5. 
+Where did that 5 come from? If you study #times in the Ruby docs, you'll know that after iterating 5 times, the block returns the initial integer. 
+Which, in this case, is 5.
+We can use this knowledge combined with what we learned from the previous exercises to determine why 5 was printed. 
+When looking at count_sheep we can see that the #times block is the only code in the method. This means it's also the last line in the method. 
+Since #times returns the initial integer, we now know that the return value of count_sheep is 5.
+=end
+
+# 8. What will the following code print? Why? Don't run it until you've attempted to answer.
+def count_sheep
+  5.times do |sheep|
+    puts sheep
+  end
+  10
+end
+
+puts count_sheep # This code will print 0, 1, 2, 3, 4 from inside the method and 10 from outside the method. 0 1 2 3 4 10
+
+# 9. What will the following code print? Why? Don't run it until you've attempted to answer.
+
+def count_sheep
+  5.times do |sheep|
+    puts sheep
+    if sheep >= 2
+      return
+    end
+  end
+end
+
+p count_sheep
+
+# The method will print 0, 1, 2, nil. The method will break after it prints 2 and p will print nil outside the method since the method returned nil (nothing specified after return).
+
+# 10. What will the following code print? Why? Don't run it until you've attempted to answer.
+def tricky_number
+  if true
+    number = 1
+  else
+    2
+  end
+end
+
+puts tricky_number # nil. Default boolean is true which sets number to 1 (but doesn't return anything) before exiting.
