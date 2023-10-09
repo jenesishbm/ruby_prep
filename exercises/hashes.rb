@@ -85,7 +85,7 @@ p low_numbers
 p numbers
 
 # 9. Create a nested hash using the following data.
-multi_car = {
+auto = {
 car: {type: "sedan", color: "blue", year: 2003}, 
 truck: {type: "pickup", color: "red", year: 1998}
 }
@@ -93,3 +93,7 @@ truck: {type: "pickup", color: "red", year: 1998}
 # 10. Rewrite car as a nested array containing the same key-value pairs.
 
 car = [[:type, "sedan"], [:color, "blue"], [:year, 2003]]
+
+# OR
+
+p car.to_a 
