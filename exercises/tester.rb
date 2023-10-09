@@ -600,4 +600,4 @@ car_arr = [[:type, "sedan"], [:color, "blue"], [:year, 2003]]
 
 # OR
 
-p car.to_a
+p car.to_a # TRANSFORMS TO ARRAY

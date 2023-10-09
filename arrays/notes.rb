@@ -7,6 +7,7 @@ Commands:
 * array.last to return last element of an array
 * array[3] to call element at third index of the array. Note that indexes start at 0 so the first item in an array is array[0]
 * array.pop to delete the last item in an array permanately. Returns the item to be deleted.
+* array.shift to delete the first item in an array permanately. Returns the item to be deleted.
 * array.push() to add an item to the end of an array permanately.
 * array << also works for ^
 * array.delete_at() eliminates the value at a certain index from your array.
